@@ -6,16 +6,37 @@ namespace ArrayExercises
     {
         static void Main(string[] args)
         {
-            int[] array1 = { 1, 2, 3 };
-            int[] freq =  { 2, 2, 3, 2, 1, 3, 3, 2, 1 };
+            string[] array = { "A", "B", "C", "D" };
 
-            // Array1: 1, 2, 3
-            // Array2: 4, 5, 6
-            // P Carterz: (1, 4), (1, 5), (1, 6)
-            //            (2, 4), (2, 5), (2, 6)
-            //            (3, 4), (3, 5), (3, 6)
+            int[][] arrangementsIndices = ArrayHelper.Arrangements(array.Length, 3);
 
-            Console.WriteLine("Hello World!");
+            for (int i = 0; i < arrangementsIndices.Length; i++)
+            {
+                int[] pairOfIndices = arrangementsIndices[i];
+                foreach(int index in pairOfIndices)
+                {
+                    Console.Write($"{array[index]}, ");
+                }
+
+                Console.WriteLine();
+            }
+
+            // int[] array1 = { 1, 2, 3 };
+            // int[] freq =  { 2, 2, 3, 2, 1, 3, 3, 2, 1 };
+
+            // Array: 1, 2, 3
+            //        0, 1, 2 ... n-1
+            // 1) N = numarul de elemente ale array-ului
+            // 2) K = cate elemente iau intr-o pereche
+
+            // (0, 1) => (array[0]=1, array[1]=2)
+
+            // Aranjamente (N=3, K = 2) :
+            // (1, 2), (1, 3), (2, 1), (2, 3), (3, 1), (3, 2)
+            // Aranjamente (N=3, K = 3) :
+            // (1, 2, 3), (2, 1, 3), (2, 3, 1), (3, 1, 2), (3, 2, 1)
+
+            ArrayHelper.Arrangements(4, 3);
         }
     }
 }

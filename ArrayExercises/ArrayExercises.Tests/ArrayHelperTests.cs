@@ -57,5 +57,69 @@ namespace ArrayExercises.Tests
             Assert.Equal(expectedResult, result);
         }
 
+        [Fact]
+        public void CartesianProduct_WhenBothOfTheInputsAreNull_ReturnsAnEmptyArray()
+        {
+            int[] array1 = null;
+            int[] array2 = null;
+
+            // act
+            int[][] result = ArrayHelper.CartesianProduct(array1, array2);
+
+            // assert
+            Assert.Empty(result);
+        }
+
+        [Fact]
+        public void CartesianProduct_WhenInput1IsNullAndInput2IsNotNull_ReturnsAnEmptyArray()
+        {
+            int[] array1 = null;
+            int[] array2 = { 4, 5, 6 } ;
+
+            // act
+            int[][] result = ArrayHelper.CartesianProduct(array1, array2);
+
+            // assert
+            Assert.Empty(result);
+        }
+
+        [Fact]
+        public void CartesianProduct_WhenInput1IsNotNullAndInput2IsNull_ReturnsAnEmptyArray()
+        {
+            int[] array1 = { 1, 2, 3 };
+            int[] array2 = null;
+
+            // act
+            int[][] result = ArrayHelper.CartesianProduct(array1, array2);
+
+            // assert
+            Assert.Empty(result);
+        }
+
+        [Fact]
+        public void CartesianProduct_WhenInput1IsNotNullAndInput2IsNotNull_ReturnsExpectedResults()
+        {
+            int[] array1 = { 1, 2, 3 };
+            int[] array2 = { 4, 5, 6 };
+            int[][] expected = new int[9][]
+            {
+                new[] { 1, 4 },
+                new[] { 1, 5 },
+                new[] { 1, 6 },
+                new[] { 2, 4 },
+                new[] { 2, 5 },
+                new[] { 2, 6 },
+                new[] { 3, 4 },
+                new[] { 3, 5 },
+                new[] { 3, 6 },
+            };
+
+            // act
+            int[][] result = ArrayHelper.CartesianProduct(array1, array2);
+
+            // assert
+            Assert.Equal(expected, result);
+        }
+
     }
 }
